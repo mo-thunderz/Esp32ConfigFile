@@ -32,14 +32,14 @@ void setup() {
   // Mount LITTLEFS and read in config file
   if (!LittleFS.begin(false)) {
     Serial.println("LITTLEFS Mount failed");
-    Serial.println("Kein Dateisystemsystem gefunden; wird formatiert");
-    // falls es nicht klappt, erneut mit Neu-Formatierung versuchen
+    Serial.println("Did not find filesystem; starting format");
+    // format if begin fails
     if (!LittleFS.begin(true)) {
-      Serial.println("LITTLEFS Mount fehlgeschlagen");
-      Serial.println("Formatierung nicht möglich");
+      Serial.println("LITTLEFS mount failed");
+      Serial.println("Formatting not possible");
       return;
     } else {
-      Serial.println("Formatierung des Dateisystems erfolgt");
+      Serial.println("Formatting");
     }
   }
   else{
@@ -60,17 +60,17 @@ void loop() {
   // Check if user sent a new string
   if (Serial.available() > 0)
   {
-    user_string = Serial.readString(); // Die empfangenen Bytes werden in einer Variable gespeichert
+    user_string = Serial.readString(); // store data in variable
 	
-	// generate new values for our variables:
-  value1 = random(1000);
-  value2 = random(1000);
+    // generate new values for our variables:
+    value1 = random(1000);
+    value2 = random(1000);  
     
-	if (saveConfig()) {
-    Serial.println("setup -> Config file saved");
-  }   
+    if (saveConfig()) {
+      Serial.println("setup -> Config file saved");
+    }   
 	
-	Serial.println("Value1 = " + String(value1) + ", value2 = " + String(value2) + ", user_string = " + user_string);
+    Serial.println("Value1 = " + String(value1) + ", value2 = " + String(value2) + ", user_string = " + user_string);
   }
 }
 

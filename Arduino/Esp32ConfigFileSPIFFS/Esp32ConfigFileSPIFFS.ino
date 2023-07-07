@@ -44,7 +44,7 @@ void loop() {
   // Check if user sent a new string
   if (Serial.available() > 0)
   {
-    user_string = Serial.readString(); //Die empfangenen Bytes werden in einer Variable gespeichert
+    user_string = Serial.readString(); // store received data
 	
 	// generate new values for our variables:
   value1 = random(1000);

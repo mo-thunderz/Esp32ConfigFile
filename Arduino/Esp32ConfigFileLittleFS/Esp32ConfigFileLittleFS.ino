@@ -60,7 +60,7 @@ void loop() {
   // Check if user sent a new string
   if (Serial.available() > 0)
   {
-    user_string = Serial.readString(); //Die empfangenen Bytes werden in einer Variable gespeichert
+    user_string = Serial.readString(); // Die empfangenen Bytes werden in einer Variable gespeichert
 	
 	// generate new values for our variables:
   value1 = random(1000);
@@ -140,7 +140,7 @@ String readFile(String filename){
     
     String fileText = "";
     while(file.available()){
-        String fileText = file.readString();
+        fileText = file.readString();
     }
     file.close();
     return fileText;
